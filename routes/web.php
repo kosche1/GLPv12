@@ -40,6 +40,14 @@ Route::middleware(["auth"])->group(function () {
         return view("teacher.dashboard");
     })->name("teacher.dashboard");
 
+    Route::get("/account/dashboard", function () {
+        return view("account.dashboard");
+    })->name("account.dashboard");
+
+    Route::get("/account/management", function () {
+        return view("account.management");
+    })->name("account.management");
+
     // Learning Routes
     Route::get('/courses', function () {
         return view('courses.index');

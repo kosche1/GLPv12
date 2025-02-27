@@ -12,43 +12,53 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Platform" class="grid gap-1" collapsible icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
+                <flux:navlist.group heading="Platform" class="grid gap-1" expandable :expanded="true" icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
                     <flux:navlist.item icon="home" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Admin Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="academic-cap" :href="route('student.dashboard')" :current="request()->routeIs('student.dashboard')" wire:navigate>{{ __('Student Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="academic-cap" :href="route('teacher.dashboard')" :current="request()->routeIs('teacher.dashboard')" wire:navigate>{{ __('Teacher Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-circle" :href="route('account.management')" :current="request()->routeIs('account.management')" wire:navigate>{{ __('Account Management') }}</flux:navlist.item>
+                    <!-- here -->
                 </flux:navlist.group>
             </flux:navlist>
 
+            @if(auth()->user()->hasRole('admin'))
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Learning" class="grid gap-1" collapsible icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
+                <flux:navlist.group heading="Learning" class="grid gap-1" expandable :expanded="true" icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
                     <flux:navlist.item icon="book-open" :href="route('courses')" :current="request()->routeIs('courses')" wire:navigate>{{ __('Courses') }}</flux:navlist.item>
                     <flux:navlist.item icon="clipboard" :href="route('assignments')" :current="request()->routeIs('assignments')" wire:navigate>{{ __('Assignments') }}</flux:navlist.item>
                     <flux:navlist.item icon="calendar" :href="route('schedule')" :current="request()->routeIs('schedule')" wire:navigate>{{ __('Schedule') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @endif
 
+            @if(auth()->user()->hasRole('admin'))
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Communication" class="grid gap-1" collapsible icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
+                <flux:navlist.group heading="Communication" class="grid gap-1" expandable :expanded="true" icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
                     <flux:navlist.item icon="chat-bubble-left-right" :href="route('messages')" :current="request()->routeIs('messages')" wire:navigate>{{ __('Messages') }}</flux:navlist.item>
                     <flux:navlist.item icon="bell" :href="route('notifications')" :current="request()->routeIs('notifications')" wire:navigate>{{ __('Notifications') }}</flux:navlist.item>
                     <flux:navlist.item icon="users" :href="route('forum')" :current="request()->routeIs('forum')" wire:navigate>{{ __('Forum') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @endif
 
+            @if(auth()->user()->hasRole('admin'))
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Resources" class="grid gap-1" collapsible icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
+                <flux:navlist.group heading="Resources" class="grid gap-1" expandable :expanded="true" icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
                     <flux:navlist.item icon="document-text" :href="route('materials')" :current="request()->routeIs('materials')" wire:navigate>{{ __('Study Materials') }}</flux:navlist.item>
                     <flux:navlist.item icon="video-camera" :href="route('recordings')" :current="request()->routeIs('recordings')" wire:navigate>{{ __('Recordings') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open" :href="route('library')" :current="request()->routeIs('library')" wire:navigate>{{ __('Library') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @endif
 
+            @if(auth()->user()->hasRole('admin'))
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Settings" class="grid gap-1" collapsible icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
+                <flux:navlist.group heading="Settings" class="grid gap-1" expandable :expanded="true" icon="chevron-down" class-icon="ml-auto h-4 w-4 shrink-0 transition-transform duration-200">
                     <flux:navlist.item icon="cog" :href="route('settings.general')" :current="request()->routeIs('settings.general')" wire:navigate>{{ __('General Settings') }}</flux:navlist.item>
                     <flux:navlist.item icon="shield-check" :href="route('admin.dashboard')" :current="request()->routeIs('permissions')" wire:navigate>{{ __('Roles & Permissions') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @endif
 
             <flux:spacer />
 
